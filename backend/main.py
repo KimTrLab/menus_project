@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from service import data
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+# from pydantic import Field
 
 a = FastAPI()
 
@@ -57,6 +58,12 @@ class Menu(BaseModel):
     name:str
     calories : int
     description : str
+
+# class Menu(BaseModel):
+#     id: int
+#     name: str = Field(min_length=6, max_length=20)
+#     calories: int = Field(ge=0)
+#     description: str
 
 
 @a.post("/menus")
