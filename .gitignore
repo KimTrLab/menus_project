@@ -75,3 +75,7 @@ htmlcov/
 *.tmp
 *.bak
 *.orig
+
+#chroma_db
+chroma_db/
+models/

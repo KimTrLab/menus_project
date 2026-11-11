@@ -3,8 +3,8 @@
 //서버에게 모든 메뉴다 주세요..
 // 이것을 수정에 이용한다면? 서버는 모든 정보를 줄 것이고, 클라이언트는 다시 찾아야 한다..
 // 서버나 클라이언트 모두에게 좋은 방법은 아니죠..
-API_SERVER = "https://menus-project-back.onrender.com"
-//API_SERVER = "http://127.0.0.1:8000"
+//API_SERVER = "https://menus-project-back.onrender.com"
+API_SERVER = "http://192.168.0.5:8000"
 
 
 async function getAllMenus() {
@@ -106,7 +106,7 @@ async function deleteMenu(menuId) {
 // 수정할 데이터를 가져오는 기능 추가, id값을 서버에게 보내서 서버가 한 개만 가져다 주는 코드
 async function getMenuOne(id) {
   try {
-    const url = `${API_SERVER}/menus/${id}`  
+    const url = `${API_SERVER}/menus/${id}`
     const re = await fetch(
       url,
       {
@@ -128,7 +128,7 @@ async function updateMenu(menuObject) {
     const re = await fetch(
       url,
       {
-        method: "PUT",  
+        method: "PUT",
         headers: { "Content-Type": "application/json" },  //html  헤더의 문서의 종류가   json 이다
         body: JSON.stringify(menuObject)   //html의 body영역에 넣은 값
       }
@@ -146,17 +146,17 @@ async function updateMenu(menuObject) {
 // 추천서비스
 async function recommendMenu(id) {
   console.log('aaaa')
-  try{
+  try {
     const url = `${API_SERVER}/menus/recommend/${id}`
     const re = await fetch(
       url,
       {
-        method:"POST"
+        method: "POST"
       }
     )
-    if(!re.ok) throw new Error("추천을 하지 못함")
+    if (!re.ok) throw new Error("추천을 하지 못함")
     return re.json()
-  } catch (error){
+  } catch (error) {
     console.log(error)
   }
 }
