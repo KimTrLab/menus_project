@@ -1,0 +1,63 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  margin: 0;
+}
+
+.welcome-card {
+  background-color: #ffffff;
+  padding: 3rem 4rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 600px;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.main-title {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  word-break: keep-all;
+}
+
+.highlight {
+  color: #2563eb;
+}
+
+.sub-text {
+  color: #64748b;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.start-button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.start-button:hover {
+  background-color: #1d4ed8;
+}
