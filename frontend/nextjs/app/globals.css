@@ -1,0 +1,169 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.header nav {
+  display: flex;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+.header a {
+  color: #333;
+  text-decoration: none;
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+}
+
+.main-area {
+  min-width: 0;
+  padding: 10px;
+}
+
+.chat-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  min-height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.chat-sidebar h2 {
+  margin: 0;
+  padding: 15px;
+  background: #007bff;
+  color: white;
+  font-size: 20px;
+}
+
+.chat-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f8f9fa;
+}
+
+.user-message,
+.bot-message {
+  max-width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: #007bff;
+  color: white;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+}
+
+.chat-input-area textarea {
+  flex: 1;
+  resize: none;
+  padding: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.recommend-list {
+  display: flex;
+  gap: 15px;
+}
+
+.card {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fafafa;
+}
+
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+}
+
+@media (max-width: 800px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-sidebar {
+    height: 400px;
+    min-height: 400px;
+  }
+
+  .recommend-list {
+    flex-direction: column;
+  }
+}

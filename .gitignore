@@ -79,3 +79,12 @@ htmlcov/
 #chroma_db
 chroma_db/
 models/
+
+# Next.js
+/frontend/nextjs/node_modules/
+/frontend/nextjs/.next/
+/frontend/nextjs/out/
+
+# 환경변수
+/frontend/nextjs/.env
+/frontend/nextjs/.env.*
