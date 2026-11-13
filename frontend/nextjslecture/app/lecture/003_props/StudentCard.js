@@ -1,26 +1,17 @@
-'use client';
+'use client'; // 부모 페이지에서 사용되는 학생 카드 컴포넌트입니다.
 
 import React from 'react';
 
-// 부모에게서 전달받은 props를 파라미터로 받습니다.
+// 부모가 전달한 props에서 이름, 점수, 과목을 구조 분해해 사용합니다.
 export function StudentCard({ name, score, subject }) {
     return (
-        <li
-            style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                padding: '12px 16px',
-                background: '#ffffff',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                alignItems: 'center'
-            }}
-        >
+        // 학생 한 명의 데이터를 목록 항목 하나로 표시합니다.
+        <li>
             <div>
-                <span style={{ fontWeight: '600', color: '#334155' }}>👤 {name}</span>
-                <span style={{ marginLeft: '8px', fontSize: '0.85rem', color: '#64748b' }}>({subject})</span>
+                <span>👤 {name}</span>
+                <span>({subject})</span>
             </div>
-            <span style={{ color: '#2563eb', fontWeight: '700' }}>{score}점</span>
+            <span>{score}점</span>
         </li>
     );
 }

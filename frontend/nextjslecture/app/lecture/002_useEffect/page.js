@@ -1,31 +1,31 @@
-'use client';
+'use client'; // useState와 useEffect는 클라이언트 컴포넌트에서 사용합니다.
 
 import { useState, useEffect } from 'react';
 
 export default function UseEffectLecture() {
+    // 버튼과 입력창에서 변경할 값을 각각 state로 관리합니다.
     const [count, setCount] = useState(0);
     const [name, setName] = useState('');
 
-    // 📌 유형 1: 마운트될 때 딱 1번만 실행 (의존성 배열이 빈 배열 `[]`)
-    // 주로 API 호출, 초기 데이터 로드, 이벤트 리스너 등록에 사용합니다.
+    // 빈 의존성 배열은 마운트 후 effect를 실행하고, 의존값 변경으로는 다시 실행하지 않습니다.
+    // 개발 모드의 Strict Mode에서는 effect와 정리 과정이 확인 목적으로 추가 실행될 수 있습니다.
     useEffect(() => {
         console.log('컴포넌트가 처음 화면에 나타났을 때(Mount) 딱 1번 실행!');
     }, []);
 
-    // 📌 유형 2: 특정 값이 바뀔 때마다 실행 (의존성 배열에 `count` 지정)
-    // count 값이 변할 때마다 코드가 실행됩니다.
+    // 의존성 배열에 count를 지정해, 처음 마운트된 뒤 count가 바뀔 때마다 실행합니다.
     useEffect(() => {
         console.log(`count 값이 ${count}(으)로 변경되었습니다!`);
     }, [count]);
 
-    // 📌 유형 3: Cleanup (뒷정리) 함수 사용
-    // 타이머, 구독, 이벤트 리스너 등을 해제할 때 메모리 누수를 막기 위해 사용합니다.
+    // 타이머처럼 컴포넌트 바깥과 연결되는 작업은 effect에서 시작하고 정리합니다.
     useEffect(() => {
+        // 1초마다 로그를 출력하는 타이머를 시작합니다.
         const timer = setInterval(() => {
             console.log('타이머 작동 중...');
         }, 1000);
 
-        // cleanup return 함수: 컴포넌트가 사라질 때(Unmount) 실행됨
+        // effect가 정리될 때 타이머를 해제해 작업이 계속 남지 않게 합니다.
         return () => {
             clearInterval(timer);
             console.log('타이머 정리 완료!(Cleanup)');
@@ -33,30 +33,31 @@ export default function UseEffectLecture() {
     }, []);
 
     return (
-        <div className="main-container">
-            <div className="welcome-card">
-                <span className="badge">React Hooks</span>
-                <h1 className="main-title">
-                    <span className="highlight">useEffect</span> 3가지 활용법
+        <div>
+            <div>
+                <span>React Hooks</span>
+                <h1>
+                    <span>useEffect</span> 3가지 활용법
                 </h1>
-                <p className="sub-text">
+                <p>
                     렌더링 이후에 실행되는 타이밍을 제어하는 훅입니다. F12 개발자 도구의 Console 창을 확인해보세요!
                 </p>
 
-                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '24px', borderRadius: '12px', textAlign: 'left' }}>
-                    <div style={{ marginBottom: '16px' }}>
-                        <h3 style={{ margin: '0 0 8px 0', color: '#1e293b' }}>Count 제어: {count}</h3>
-                        <button className="start-button" onClick={() => setCount(count + 1)}>Count 올리기</button>
+                {/* 버튼으로 count를 변경해 의존성 배열이 있는 effect의 로그를 확인합니다. */}
+                <div>
+                    <div>
+                        <h3>Count 제어: {count}</h3>
+                        <button onClick={() => setCount(count + 1)}>Count 올리기</button>
                     </div>
 
                     <div>
-                        <h3 style={{ margin: '0 0 8px 0', color: '#1e293b' }}>이름 입력</h3>
+                        <h3>이름 입력</h3>
+                        {/* 이름 입력값은 state와 연결되지만 현재 effect의 의존성에는 포함하지 않았습니다. */}
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="이름 입력"
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #cbd5e1' }}
                         />
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+강의 필기: 컴포넌트 합성과 children
+
+핵심 내용
+- React 컴포넌트는 다른 컴포넌트를 포함해 화면을 조합할 수 있다.
+- 컴포넌트의 여는 태그와 닫는 태그 사이에 전달한 JSX는 children prop으로 받을 수 있다.
+- children을 받는 재사용 컴포넌트는 바깥 구조를 담당하고, 사용 위치마다 다른 내용을 안에 넣을 수 있다.
+
+예제 흐름
+1. LessonPanel은 title과 children을 props로 받는다.
+2. <LessonPanel>과 </LessonPanel> 사이의 JSX가 children으로 전달된다.
+3. 같은 LessonPanel을 여러 번 사용하면서 title과 내부 내용을 다르게 구성한다.
+
+Next.js와의 연결
+- Next.js의 layout 컴포넌트도 children을 렌더링해 공통 화면 안에 현재 페이지 내용을 배치한다.
+- 이 React 합성 개념을 이해하면 페이지 레이아웃과 공통 컴포넌트 구조를 이해하기 쉽다.

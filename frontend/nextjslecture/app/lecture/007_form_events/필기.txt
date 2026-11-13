@@ -1,0 +1,15 @@
+강의 필기: React 폼과 이벤트 처리
+
+핵심 내용
+- controlled form은 input의 value를 React state에 연결하고 onChange에서 state를 갱신한다.
+- 폼의 onSubmit은 제출 이벤트를 처리한다. event.preventDefault()를 호출하면 브라우저의 기본 페이지 새로고침을 막을 수 있다.
+- input의 name으로 어떤 필드가 바뀌었는지 확인하고, 기존 객체를 복사한 뒤 변경 필드만 갱신한다.
+
+코드에서 볼 점
+- 숫자 input도 event.target.value로 읽은 값은 문자열이다. 숫자로 사용할 때 Number()로 변환한다.
+- required, min 같은 HTML 속성으로 기본 입력 검증을 적용한다.
+- submit 버튼은 폼을 제출하고, type="button"인 초기화 버튼은 폼 제출을 발생시키지 않는다.
+
+실제 앱과 연결
+- 메뉴 검색 화면의 입력값과 onSubmit 검색 흐름을 이해하는 기초다.
+- 메뉴 등록 폼처럼 여러 입력값을 모아 제출하는 화면에도 같은 패턴을 적용할 수 있다.

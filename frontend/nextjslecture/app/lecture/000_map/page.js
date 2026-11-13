@@ -1,9 +1,10 @@
-'use client';
+'use client'; // 이 파일을 클라이언트 컴포넌트로 지정합니다. 이 예제의 목록 렌더링만으로는 필수는 아닙니다.
 
 import React from 'react';
 
+// app/lecture/000_map/page.js는 /lecture/000_map 경로의 페이지입니다.
 export default function MapDataLecturePage() {
-    // 1. 자바스크립트 Map 자료형 생성 (키-값 쌍 데이터)
+    // Map은 키와 값의 쌍을 저장합니다. 여기서는 학생 이름을 키, 점수를 값으로 사용합니다.
     const studentScores = new Map([
         ['김철수', 85],
         ['이영희', 92],
@@ -12,44 +13,32 @@ export default function MapDataLecturePage() {
     ]);
 
     return (
-        <div className="main-container">
-            <div className="welcome-card">
-                {/* badge 클래스 적용 */}
-                <span className="badge">React Data Structure</span>
+        <div>
+            <div>
+                <span>React Data Structure</span>
 
-                {/* main-title, highlight 클래스 적용 */}
-                <h1 className="main-title">
-                    JavaScript <span className="highlight">Map</span> 자료형 렌더링하기 🗺️
+                <h1>
+                    JavaScript <span>Map</span> 자료형 렌더링하기 🗺️
                 </h1>
 
-                {/* sub-text 클래스 적용 */}
-                <p className="sub-text">
+                <p>
                     <code>Map</code> 객체는 직접 렌더링할 수 없으므로,{' '}
                     <code>Array.from()</code>을 이용해 배열로 변환한 후 화면에 그려야 합니다.
                 </p>
 
-                {/* 실습 영역 (인라인 스타일로 주신 CSS 무드와 어울리도록 정돈) */}
-                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '24px', borderRadius: '12px', textAlign: 'left' }}>
-                    <h3 style={{ marginTop: 0, marginBottom: '16px', color: '#1e293b', fontSize: '1.1rem' }}>
+                {/* 실습 영역 */}
+                <div>
+                    <h3>
                         학생 성적 리스트 (Map 데이터)
                     </h3>
 
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <ul>
+                        {/* entries()의 [키, 값] 쌍을 배열로 바꾼 뒤 JSX 목록으로 렌더링합니다. */}
                         {Array.from(studentScores.entries()).map(([name, score]) => (
-                            <li
-                                key={name}
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    padding: '12px 16px',
-                                    background: '#ffffff',
-                                    border: '1px solid #e2e8f0',
-                                    borderRadius: '8px',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <span style={{ fontWeight: '600', color: '#334155' }}>👤 {name} 학생</span>
-                                <span style={{ color: '#2563eb', fontWeight: '700' }}>{score}점</span>
+                            // 학생 이름으로 각 목록 항목을 구분합니다.
+                            <li key={name}>
+                                <span>👤 {name} 학생</span>
+                                <span>{score}점</span>
                             </li>
                         ))}
                     </ul>
