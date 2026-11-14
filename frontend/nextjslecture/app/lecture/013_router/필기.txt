@@ -1,21 +1,28 @@
-강의 필기: Next.js App Router
+강의 필기: URL, 라우트 트리와 App Router
 
-핵심 내용
-- App Router는 app 디렉터리의 폴더와 page.js 파일을 조합해 URL 경로를 만든다.
-- 이 실습의 시작 경로는 /lecture/013_router다.
-- about/page.js는 /lecture/013_router/about, menus/page.js는 /lecture/013_router/menus 경로에 해당한다.
+핵심 개념
+- URL은 브라우저가 요청하는 자원의 주소다.
+- Next.js App Router는 app 디렉터리 구조를 라우트 트리로 해석한다.
+- 폴더 경로와 그 안의 page.js가 조합되어 사용자가 방문할 페이지 URL이 된다.
 
-화면 이동
-- next/link의 Link 컴포넌트로 내부 경로를 연결한다.
-- 메뉴 목록은 menus 배열을 map()으로 렌더링하고 각 메뉴 상세 링크를 만든다.
-- 목록과 소개 페이지에서 실습 시작 페이지로 돌아가는 링크도 제공한다.
+정적 경로의 동작
+1. app/lecture/013_router/about/page.js는 /lecture/013_router/about 경로에 대응한다.
+2. next/link의 Link는 앱 내부 URL을 연결한다.
+3. 사용자가 메뉴 링크를 누르면 Next.js가 해당 경로의 페이지를 보여 준다.
+4. 메뉴 목록은 배열 데이터로 링크를 만들고, 각 링크는 상세 URL로 연결된다.
 
-동적 경로
-- menus/[id]/page.js에서 대괄호로 감싼 id는 URL에 따라 달라지는 동적 세그먼트다.
-- 예: /lecture/013_router/menus/1의 id 값은 "1"이다.
-- Next.js 16에서는 page의 params가 Promise이므로 async 페이지에서 await params로 값을 얻는다.
-- 전달된 id를 메뉴 데이터와 비교하고, 일치하는 항목이 없으면 next/navigation의 notFound()로 404 처리를 한다.
+동적 경로의 동작
+- [id] 폴더는 URL의 일부가 데이터마다 달라지는 동적 세그먼트다.
+- /lecture/013_router/menus/1에 접속하면 id 값은 문자열 "1"로 전달된다.
+- 상세 페이지는 params에서 id를 얻고, 해당 데이터와 연결한다.
+- 일치하는 메뉴가 없으면 notFound()가 404 화면으로 이어진다.
+- Next.js 16에서는 page의 params가 Promise이므로 await params로 읽는다.
 
-복습
-- 디렉터리 구조로 정적 경로와 동적 경로를 구분해 본다.
-- URL, Link의 href, 동적 세그먼트 params가 어떻게 이어지는지 추적한다.
+라우팅을 쓰는 이유
+- 메뉴마다 파일을 따로 만들지 않고 공통 상세 화면을 재사용한다.
+- URL에 자원 식별자를 포함하면 페이지를 공유하거나 새로고침해도 같은 상세 항목을 찾을 수 있다.
+- 파일 구조, URL, 화면 컴포넌트가 연결되어 앱의 페이지 구성을 추적하기 쉽다.
+
+생각해 보기
+- 메뉴 이름이 아니라 ID를 URL에 넣으면 어떤 장점이 있을까?
+- 존재하지 않는 ID를 빈 페이지로 남겨 두지 않고 404로 처리하는 이유는 무엇일까?

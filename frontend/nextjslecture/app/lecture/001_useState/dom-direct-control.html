@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript로 DOM 직접 조작하기</title>
+  </head>
+  <body>
+    <main>
+      <h1>JavaScript로 DOM 직접 조작하기</h1>
+      <p>
+        왼쪽 소스에서 DOM 요소를 찾고, 오른쪽 버튼을 눌러 화면이 바뀌는 것을
+        확인하세요.
+      </p>
+
+      <div class="comparison">
+        <section class="panel">
+          <h2>소스 코드</h2>
+          <pre><code>&lt;!-- JavaScript가 찾을 HTML 요소 --&gt;
+&lt;p id="favorite-status"&gt;즐겨찾기에 저장되지 않았습니다.&lt;/p&gt;
+&lt;button id="favorite-button" type="button"&gt;즐겨찾기 추가&lt;/button&gt;
+
+const statusElement = document.getElementById('favorite-status');
+const favoriteButton = document.getElementById('favorite-button');
+let isFavorite = false;
+
+favoriteButton.addEventListener('click', function () {
+    isFavorite = !isFavorite;
+    statusElement.textContent = isFavorite
+        ? '즐겨찾기에 저장되었습니다.'
+        : '즐겨찾기에 저장되지 않았습니다.';
+    favoriteButton.textContent = isFavorite
+        ? '즐겨찾기 해제'
+        : '즐겨찾기 추가';
+});</code></pre>
+        </section>
+
+        <section class="panel">
+          <h2>실제 실행 화면</h2>
+          <h3>김치찌개</h3>
+          <p id="favorite-status">즐겨찾기에 저장되지 않았습니다.</p>
+          <button id="favorite-button" type="button">즐겨찾기 추가</button>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const statusElement = document.getElementById("favorite-status");
+      const favoriteButton = document.getElementById("favorite-button");
+      let isFavorite = false;
+
+      favoriteButton.addEventListener("click", function () {
+        isFavorite = !isFavorite;
+        //화면을 직접 조작하는 코드
+        statusElement.textContent = isFavorite
+          ? "즐겨찾기에 저장되었습니다."
+          : "즐겨찾기에 저장되지 않았습니다.";
+        favoriteButton.textContent = isFavorite
+          ? "즐겨찾기 해제"
+          : "즐겨찾기 추가";
+      });
+    </script>
+  </body>
+</html>
