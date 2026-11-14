@@ -1,0 +1,16 @@
+강의 필기: controlled input으로 메뉴 이름 미리보기
+
+핵심 내용
+- input의 value를 문자열 state에 연결하고 onChange에서 값을 갱신한다.
+- state가 바뀔 때 미리보기와 글자 수가 함께 갱신된다.
+- 이렇게 React state가 입력값을 관리하는 입력창을 controlled input이라고 한다.
+
+코드에서 볼 점
+- value={name}은 화면에 표시할 입력값의 기준을 React state로 정한다.
+- onChange는 이벤트 객체의 target.value를 state에 저장한다.
+- {name || '메뉴 이름'}은 아직 입력이 없을 때 미리보기 기본 문구를 보여 준다.
+- Hook과 브라우저 입력 이벤트를 쓰므로 'use client'가 필요하다.
+
+복습
+- 입력창에 글자를 입력할 때 state와 JSX가 어떻게 연결되는지 설명해 본다.
+- 입력값을 제출해 목록에 추가하는 폼 동작은 다음 강의에서 확장한다.

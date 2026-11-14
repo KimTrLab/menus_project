@@ -1,0 +1,17 @@
+강의 필기: Server Component와 Client Component
+
+핵심 내용
+- Next.js App Router에서 page.js는 기본적으로 Server Component다.
+- useState와 버튼 클릭 이벤트처럼 브라우저 상호작용이 필요한 컴포넌트에는 'use client'를 쓴다.
+- 'use client'는 상호작용이 필요한 컴포넌트 파일의 맨 위에 둔다.
+
+예제 흐름
+1. page.js는 메뉴 이름과 분류를 화면에 표시한다.
+2. 즐겨찾기 버튼만 별도 Client Component로 분리한다.
+3. page.js가 메뉴 이름을 props로 전달한다.
+4. 버튼 컴포넌트는 useState로 즐겨찾기 상태를 관리한다.
+
+기억할 점
+- 모든 파일에 'use client'를 붙이지 않는다.
+- state, 이벤트, 브라우저 API가 필요한 작은 부분만 Client Component로 둔다.
+- 먼저 Server Component와 Client Component의 차이를 익히고, 서버 데이터 요청은 이후 단계에서 다룬다.
